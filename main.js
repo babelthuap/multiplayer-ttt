@@ -7,7 +7,7 @@ $(document).ready(function() {
   let playersRef = tttRef.child('players');
   let whoseTurnRef = tttRef.child('whoseTurn');
   let boardStateRef = tttRef.child('boardState');
-  let name, numPlayers, playerX, playerO, playerSelf, selfXorO, whoseTurn, boardState;
+  let name, numPlayers, playerX, playerO, playerSelf, selfXorO, whoseTurn, boardState, timeout;
   let myCells = [];
   let winningStates = [ [0,1,2], [3,4,5], [6,7,8],
                         [0,3,6], [1,4,7], [2,5,8],
@@ -102,9 +102,15 @@ $(document).ready(function() {
     boardStateRef.set(boardState);
     whoseTurnRef.set('X');
     $('#pX').closest('center').addClass('your-turn');
+    // auto quit after 30 seconds
+    timeout = setTimeout(() => {
+      console.log('quitting');
+      quit();
+    }, 30000);
   }
 
   function quit() {
+    clearTimeout(timeout);
     playersRef.child(playerSelf).remove();
     $('#name, #join').prop('disabled', false);
     $('#quit').prop('disabled', true);
