@@ -80,6 +80,8 @@ $(document).ready(function() {
         }
         $('#name, #join').prop('disabled', true);
         $('#quit').prop('disabled', false);
+        // auto quit after 5 minutes
+        loginTimeout = setTimeout(quit, 5 * 60000);
       } else {
         alert('too many players');
         console.log('failed');
@@ -107,12 +109,13 @@ $(document).ready(function() {
     boardStateRef.set(boardState);
     whoseTurnRef.set('X');
     $('#pX').closest('center').addClass('your-turn');
-    // auto quit after 30 seconds
-    timeout = setTimeout(quit, 30000);
+    // auto quit after 60 seconds
+    gameTimeout = setTimeout(quit, 60000);
   }
 
   function quit() {
-    clearTimeout(timeout);
+    clearTimeout(gameTimeout);
+    clearTimeout(loginTimeout);
     playersRef.child(playerSelf).remove();
     $('#name, #join').prop('disabled', false);
     $('#quit').prop('disabled', true);
