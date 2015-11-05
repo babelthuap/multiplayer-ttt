@@ -18,8 +18,6 @@ $(document).ready(function() {
   playersRef.on('value', (snap) => {
     numPlayers = snap.numChildren();
 
-    console.log('players:', snap.val());
-
     let players = snap.val()
     if (players) {
       let keys = Object.keys(players);
@@ -107,7 +105,6 @@ $(document).ready(function() {
     $('#pX').closest('center').addClass('your-turn');
     // auto quit after 30 seconds
     timeout = setTimeout(() => {
-      console.log('quitting');
       quit();
     }, 30000);
   }
@@ -127,7 +124,6 @@ $(document).ready(function() {
   function takeTurn() {
     if (playerSelf) {
 
-      console.log('Player ' + selfXorO + ' trying to make move: ' + whoseTurn);
       if (selfXorO === whoseTurn) {
         if (!$(this).text()) {
           let cellNum = +$(this).attr('id');
@@ -152,7 +148,6 @@ $(document).ready(function() {
       })
 
     }
-    console.log('change board state:', boardState);
   }
 
   Array.prototype.containedIn = function(otherArray) {
@@ -169,18 +164,3 @@ $(document).ready(function() {
   }
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
