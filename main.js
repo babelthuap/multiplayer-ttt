@@ -31,6 +31,8 @@ $(document).ready(function() {
     } else {
       playerX = '';
       playerO = '';
+      $('#pX').closest('center').removeClass('your-turn');
+      $('#pO').closest('center').removeClass('your-turn');
     }
     updatePlayers();
   });
@@ -43,8 +45,8 @@ $(document).ready(function() {
   });
   boardStateRef.on('value', (snap) => {
     boardState = snap.val();
-    if (boardState.slice(0,3) === 'win') {
-      alert(boardState.slice(-1) + ' wins!');
+    if (boardState && boardState.slice(0,3) === 'win') {
+      alert((boardState.slice(-1) === 'X' ? playerX : playerO) + ' wins!');
       quit();
     } else {
       drawBoard();
@@ -108,6 +110,7 @@ $(document).ready(function() {
     $('#quit').prop('disabled', true);
     selfXorO = undefined;
     playerSelf = undefined;
+    boardStateRef.set(null);
     $('#pX').closest('center').removeClass('your-turn');
     $('#pO').closest('center').removeClass('your-turn');
   }
