@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiplayer Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <center>
+      <h1>Multiplayer Tic-Tac-Toe</h1>
+      <input type="text" id="name" placeholder="your name">
+      <button class="btn btn-default" id="join">Join</button>
+      <button class="btn btn-default" id="quit" disabled>Quit</button>
+    </center>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-xs-6"><center class="player">Player X: <span id="pX"></span></center></div>
+      <div class="col-xs-6"><center class="player">Player O: <span id="pO"></span></center></div>
+    </div>
+
+    <hr>
+
+    <div class="row" id="board"><center>
+      <table>
+        <tbody>
+          <tr>
+            <td class="cell" id="0"></td>
+            <td class="cell" id="1"></td>
+            <td class="cell" id="2"></td>
+          </tr>
+          <tr>
+            <td class="cell" id="3"></td>
+            <td class="cell" id="4"></td>
+            <td class="cell" id="5"></td>
+          </tr>
+          <tr>
+            <td class="cell" id="6"></td>
+            <td class="cell" id="7"></td>
+            <td class="cell" id="8"></td>
+          </tr>
+        </tbody>
+      </table>
+    </center></div>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
