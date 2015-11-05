@@ -106,7 +106,7 @@ $(document).ready(function() {
   function startGame() {
     myCells = [];
     $('#board').show();
-    boardState = ['','','', '','','', '','',''];
+    boardState = (new Array(9)).fill('');
     boardStateRef.set(boardState);
     whoseTurnRef.set('X');
     $('#pX').closest('center').addClass('your-turn');
