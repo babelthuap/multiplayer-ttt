@@ -1,3 +1,7 @@
+#name {
+  padding: 5px;
+}
+
 #board {
   display: none;
 }

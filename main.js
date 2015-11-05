@@ -29,8 +29,8 @@ $(document).ready(function() {
     } else {
       playerX = '';
       playerO = '';
-      $('#pX').closest('center').removeClass('your-turn');
-      $('#pO').closest('center').removeClass('your-turn');
+      $('#name, #join').prop('disabled', false);
+      $('#pX, #pO').closest('center').removeClass('your-turn');
     }
     updatePlayers();
   });
@@ -117,8 +117,7 @@ $(document).ready(function() {
     selfXorO = undefined;
     playerSelf = undefined;
     boardStateRef.set(null);
-    $('#pX').closest('center').removeClass('your-turn');
-    $('#pO').closest('center').removeClass('your-turn');
+    $('#pX, #pO').closest('center').removeClass('your-turn');
   }
 
   function takeTurn() {
