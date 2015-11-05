@@ -36,6 +36,7 @@ $(document).ready(function() {
     }
     updatePlayers();
   });
+
   whoseTurnRef.on('value', (snap) => {
     whoseTurn = snap.val();
     if (playerX && playerO) {
@@ -43,6 +44,7 @@ $(document).ready(function() {
       $('#p' + (whoseTurn === 'X' ? 'O' : 'X')).closest('center').removeClass('your-turn');
     }
   });
+
   boardStateRef.on('value', (snap) => {
     boardState = snap.val();
     if (boardState && boardState.slice(0,3) === 'win') {
@@ -68,6 +70,7 @@ $(document).ready(function() {
       if (numPlayers < 2) {
         let newPlayerRef = playersRef.push(name);
         playerSelf = newPlayerRef.path.o[1];
+        playersRef.child(playerSelf).onDisconnect().remove();
         if (numPlayers === 1) {
           selfXorO = 'X';
         } else {
