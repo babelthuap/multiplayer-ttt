@@ -7,7 +7,8 @@ $(document).ready(function() {
   let playersRef = tttRef.child('players');
   let whoseTurnRef = tttRef.child('whoseTurn');
   let boardStateRef = tttRef.child('boardState');
-  let name, numPlayers, playerX, playerO, playerSelf, selfXorO, whoseTurn, boardState, timeout;
+  let name, numPlayers, playerX, playerO, playerSelf, selfXorO,
+      whoseTurn, boardState, loginTimeout, gameTimeout;
   let myCells = [];
   let winningStates = [ [0,1,2], [3,4,5], [6,7,8],
                         [0,3,6], [1,4,7], [2,5,8],
@@ -114,8 +115,12 @@ $(document).ready(function() {
   }
 
   function quit() {
-    clearTimeout(gameTimeout);
-    clearTimeout(loginTimeout);
+    try {
+      clearTimeout(gameTimeout);
+      clearTimeout(loginTimeout);
+    } catch (e) {
+      console.log(e);
+    }
     playersRef.child(playerSelf).remove();
     $('#name, #join').prop('disabled', false);
     $('#quit').prop('disabled', true);
