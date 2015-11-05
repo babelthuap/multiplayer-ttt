@@ -50,6 +50,10 @@ $(document).ready(function() {
       quit();
     } else {
       drawBoard();
+      if (boardState && boardState.every((cell) => cell ? true : false)) {
+        // it's a draw
+        setTimeout(quit, 750);
+      }
     } 
   })
 
@@ -104,9 +108,7 @@ $(document).ready(function() {
     whoseTurnRef.set('X');
     $('#pX').closest('center').addClass('your-turn');
     // auto quit after 30 seconds
-    timeout = setTimeout(() => {
-      quit();
-    }, 30000);
+    timeout = setTimeout(quit, 30000);
   }
 
   function quit() {
